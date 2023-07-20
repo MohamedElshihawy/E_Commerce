@@ -1,5 +1,6 @@
 package com.example.e_commerce.presentation.splash
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,29 +12,41 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.e_commerce.R
-import com.example.e_commerce.presentation.common.CustomButton
-import com.example.e_commerce.ui.theme.SplashBG
+import com.example.e_commerce.navigatoin.Screen
+import com.example.e_commerce.presentation.common.components.CustomButton
+import com.example.e_commerce.ui.theme.DarkSlateBlue
 import com.example.e_commerce.ui.theme.darkOrange
+import org.koin.androidx.compose.get
 
 @Composable
 fun SplashScreen(
     modifier: Modifier = Modifier,
+    viewModel: SplashViewModel = get(),
+    navController: NavController,
+
 ) {
+    val signInState = remember {
+        viewModel.signInState
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(SplashBG),
+            .background(DarkSlateBlue),
     ) {
         Image(
             painter = painterResource(id = R.drawable.splash_bg),
@@ -64,10 +77,13 @@ fun SplashScreen(
                 CustomButton(
                     buttonColors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
-                        contentColor = SplashBG,
+                        contentColor = DarkSlateBlue,
                     ),
                     text = stringResource(id = R.string.join_now),
                     modifier = Modifier,
+                    onButtonClick = {
+                        navController.navigate(Screen.SignUp.route)
+                    },
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -87,14 +103,26 @@ fun SplashScreen(
                         )
                     }",
                     modifier = Modifier,
+                    onButtonClick = {
+                        navController.navigate(Screen.SignIn.route)
+                    },
                 )
             }
         }
     }
-}
 
-@Preview
-@Composable
-fun prev() {
-    SplashScreen()
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = signInState.value.isSuccess) {
+        if (signInState.value.isSuccess != "") {
+            Toast.makeText(context, signInState.value.isSuccess, Toast.LENGTH_SHORT).show()
+            // navController.navigate("")
+        }
+    }
+
+    LaunchedEffect(key1 = signInState.value.isError) {
+        if (signInState.value.isError != "") {
+            Toast.makeText(context, signInState.value.isError, Toast.LENGTH_SHORT).show()
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.e_commerce.presentation.common
+package com.example.e_commerce.presentation.common.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,14 +20,18 @@ fun CustomButton(
     modifier: Modifier = Modifier,
     text: String = "Button",
     buttonColors: ButtonColors,
+    onButtonClick: () -> Unit,
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { onButtonClick() },
         shape = RoundedCornerShape(8.dp),
         colors = buttonColors,
         modifier = modifier
             .fillMaxWidth()
-            .shadow(shape = RoundedCornerShape(8.dp), elevation = 8.dp),
+            .shadow(
+                shape = RoundedCornerShape(12.dp),
+                elevation = 8.dp,
+            ),
     ) {
         Row() {
             Text(

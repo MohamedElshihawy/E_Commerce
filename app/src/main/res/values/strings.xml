@@ -3,4 +3,9 @@
     <string name="join_now">Join Now</string>
     <string name="already_have_an_account">Already have an account ?</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign up</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="iam_an_admin">I\'m an admin</string>
+    <string name="iam_not_an_admin">I\'m not an admin</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>

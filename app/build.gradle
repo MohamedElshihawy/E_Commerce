@@ -76,6 +76,8 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.compose)
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    // datastore preference
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
