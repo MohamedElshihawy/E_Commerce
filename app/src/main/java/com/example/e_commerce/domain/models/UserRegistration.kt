@@ -8,6 +8,8 @@ data class UserRegistration(
     val userEmailField: CustomTextFieldState = CustomTextFieldState(),
     val userPhoneField: CustomTextFieldState = CustomTextFieldState(),
     val userPasswordField: CustomTextFieldState = CustomTextFieldState(),
+    val userAddressField: CustomTextFieldState = CustomTextFieldState(),
+    val userImageField: CustomTextFieldState = CustomTextFieldState(),
 ) {
     fun toUserRegistrationEntity(): UserRegistrationEntity {
         return UserRegistrationEntity(
@@ -15,6 +17,8 @@ data class UserRegistration(
             userEmail = userEmailField.value,
             userPhone = userPhoneField.value,
             userPassword = userPasswordField.value,
+            userAddress = userAddressField.value,
+            userImage = userImageField.value,
         )
     }
 }

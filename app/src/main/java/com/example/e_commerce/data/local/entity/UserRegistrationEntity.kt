@@ -8,6 +8,8 @@ data class UserRegistrationEntity(
     val userEmail: String = "",
     val userPhone: String = "",
     val userPassword: String = "",
+    val userAddress: String = "",
+    val userImage: String = "",
 ) {
 
     fun toUserRegistration(): UserRegistration {

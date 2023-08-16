@@ -7,7 +7,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthenticationRepository {
 
-    suspend fun login(userName: String, password: String): Flow<Resource<UserRegistrationEntity>>
+    suspend fun login(
+        dbParentNode: String,
+        userName: String,
+        password: String,
+    ): Flow<Resource<UserRegistration>>
 
     suspend fun createAccount(userRegistration: UserRegistration): Flow<Resource<UserRegistration>>
 }
