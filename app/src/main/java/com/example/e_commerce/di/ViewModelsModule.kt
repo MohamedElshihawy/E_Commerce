@@ -1,21 +1,29 @@
 package com.example.e_commerce.di
 
-import com.example.e_commerce.presentation.features.addNewProduct.AddNewProductViewModel
-import com.example.e_commerce.presentation.features.manageUserProfile.ManageUserProfileViewModel
-import com.example.e_commerce.presentation.features.productDetails.ProductDetailsViewModel
-import com.example.e_commerce.presentation.features.signIn.SignInViewModel
-import com.example.e_commerce.presentation.features.signUp.SignUpViewModel
-import com.example.e_commerce.presentation.features.splash.SplashViewModel
-import com.example.e_commerce.presentation.features.userCart.confirmOrder.ConfirmOrderViewModel
-import com.example.e_commerce.presentation.features.userCart.manageOrder.CartViewModel
-import com.example.e_commerce.presentation.features.userHomePage.UserHomeViewModel
+import com.example.e_commerce.data.local.dataStore.PreferenceDataStoreHelper
+import com.example.e_commerce.navigatoin.NavigationViewModel
+import com.example.e_commerce.presentation.features.admin.addNewProduct.AddNewProductViewModel
+import com.example.e_commerce.presentation.features.admin.ordersCart.AdminCartViewModel
+import com.example.e_commerce.presentation.features.shared.signIn.SignInViewModel
+import com.example.e_commerce.presentation.features.shared.signUp.SignUpViewModel
+import com.example.e_commerce.presentation.features.shared.splash.SplashViewModel
+import com.example.e_commerce.presentation.features.user.manageUserProfile.ManageUserProfileViewModel
+import com.example.e_commerce.presentation.features.user.productDetails.ProductDetailsViewModel
+import com.example.e_commerce.presentation.features.user.userCart.confirmOrder.ConfirmOrderViewModel
+import com.example.e_commerce.presentation.features.user.userCart.manageOrder.CartViewModel
+import com.example.e_commerce.presentation.features.user.userHomePage.UserHomeViewModel
 import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelsModule = module {
 
-    includes(userCasesModule)
+    includes(useCasesModule)
+
+    single {
+        PreferenceDataStoreHelper(androidContext())
+    }
 
     viewModel {
         SignUpViewModel(get())
@@ -32,7 +40,7 @@ val viewModelsModule = module {
         AddNewProductViewModel(get())
     }
     viewModel {
-        UserHomeViewModel(get())
+        UserHomeViewModel(get() , get())
     }
 
     viewModel {
@@ -48,6 +56,14 @@ val viewModelsModule = module {
     }
 
     viewModel {
-        ConfirmOrderViewModel(get() , androidApplication())
+        ConfirmOrderViewModel(get(), androidApplication())
+    }
+
+    viewModel {
+        AdminCartViewModel(get(), androidApplication())
+    }
+
+    viewModel {
+        NavigationViewModel(androidApplication())
     }
 }

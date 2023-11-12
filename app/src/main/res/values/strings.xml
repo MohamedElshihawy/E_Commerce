@@ -4,6 +4,8 @@
     <string name="already_have_an_account">Already have an account ?</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign up</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
     <string name="remember_me">Remember Me</string>
     <string name="iam_an_admin">I\'m an admin</string>
     <string name="iam_not_an_admin">I\'m not an admin</string>
@@ -13,6 +15,9 @@
     <string name="user_name_validation">"User Name Must be 8 letters long or more and shouldn't contains .#\$"</string>
     <string name="user_email_violation">"Please Enter a valid Email"</string>
     <string name="user_password_violation">"Password must be 10 or more letters , numbers or special characters"</string>
+    <string name="user_phone_violation">"please Enter a valid phone number"</string>
+    <string name="user_address_violation">"Please enter a valid user address"</string>
+    <string name="user_city_name_violation">"Please enter a valid city name"</string>
 
     //
     <string name="add_new_product">"Add a new product"</string>
@@ -34,6 +39,7 @@
 
     //
     <string name="settings">Settings</string>
+    <string name="confirm">Confirm</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>

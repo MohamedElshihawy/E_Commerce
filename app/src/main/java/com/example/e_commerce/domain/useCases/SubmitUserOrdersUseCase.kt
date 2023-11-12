@@ -1,18 +1,17 @@
 package com.example.e_commerce.domain.useCases
 
 import com.example.e_commerce.domain.models.RequestToAdmin
-import com.example.e_commerce.domain.models.UserOrder
-import com.example.e_commerce.domain.repository.CartOperationsRepository
+import com.example.e_commerce.domain.repository.UserCartOperationsRepository
 import com.example.e_commerce.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 class SubmitUserOrdersUseCase(
-    private val repository: CartOperationsRepository,
+    private val repository: UserCartOperationsRepository,
 ) {
 
     suspend operator fun invoke(
         userId: String,
-        request:RequestToAdmin
+        request: RequestToAdmin,
     ): Flow<Resource<Boolean>> {
         return repository.submitUserOrderToAdmin(
             userId = userId,

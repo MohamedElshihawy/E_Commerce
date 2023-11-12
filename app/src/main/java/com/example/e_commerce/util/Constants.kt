@@ -5,10 +5,22 @@ object Constants {
     const val ADMINS_NODE = "admins"
     const val PRODUCTS_NODE = "products_node"
     const val CART_NODE = "cart"
+
+    // user cart
     const val CART_USER_VIEW = "cart_user_view"
     const val WAITING_IN_CART = "waiting"
     const val SUBMITTED_ORDER = "submitted"
+
+    // admin cart
     const val CART_ADMIN_VIEW = "cart_admin_view"
+
+    // product status
+    const val ACCEPTED = "accepted"
+    const val REJECTED = "rejected"
+    const val WAITING = "waiting"
+    const val SHIPPED = "shipped"
+    const val NOT_SHIPPED = "not_shipped"
+    const val DELIVERED = "delivered"
 
     const val ROOT = "root"
 

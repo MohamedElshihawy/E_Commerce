@@ -1,0 +1,3 @@
+package com.example.e_commerce.presentation.features.admin.adminCategoriesManagement
+
+sealed class AdminCategoriesEvents

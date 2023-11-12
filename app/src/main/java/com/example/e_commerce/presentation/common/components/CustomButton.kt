@@ -1,7 +1,6 @@
 package com.example.e_commerce.presentation.common.components
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -29,7 +28,6 @@ fun CustomButton(
         shape = shape,
         colors = buttonColors,
         modifier = modifier
-            .fillMaxWidth()
             .shadow(
                 shape = shape,
                 elevation = 8.dp,

@@ -1,16 +1,16 @@
 package com.example.e_commerce.data.remote.repository
 
 import android.net.Uri
-import android.util.Log
 import com.example.e_commerce.domain.models.Product
 import com.example.e_commerce.domain.models.ProductReviews
 import com.example.e_commerce.domain.repository.ProductOperationsRepository
+import com.example.e_commerce.domain.utils.deleteImage
+import com.example.e_commerce.domain.utils.parsers.ProductParser.hashMapToProduct
+import com.example.e_commerce.domain.utils.parsers.ProductParser.productToHashMap
 import com.example.e_commerce.domain.utils.uploadImage
 import com.example.e_commerce.util.Constants
 import com.example.e_commerce.util.Constants.PRODUCTS_NODE
 import com.example.e_commerce.util.Constants.ROOT
-import com.example.e_commerce.util.HelperMethods.hashMapToProduct
-import com.example.e_commerce.util.HelperMethods.productToHashMap
 import com.example.e_commerce.util.Resource
 import com.example.e_commerce.util.TimeDateFormatting
 import com.google.firebase.database.DataSnapshot
@@ -159,6 +159,54 @@ class ProductOperationsRepositoryImpl(
                 }
 
             awaitClose {}
+        }
+    }
+
+    override suspend fun editProductDetails(
+        productId: String,
+        product: Product,
+    ): Flow<Resource<Boolean>> {
+        return callbackFlow {
+            trySend(Resource.Loading())
+            val reference = firebaseDateBase.reference.child(ROOT).child(PRODUCTS_NODE)
+                .child(productId)
+
+            val updatedProduct = productToHashMap(product)
+
+            reference.updateChildren(updatedProduct)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        trySend(Resource.Success(true))
+                    } else {
+                        trySend(Resource.Error("couldn't update product details "))
+                    }
+                }
+        }
+    }
+
+    override suspend fun deleteProduct(
+        productId: String,
+        imageUrl: String,
+    ): Flow<Resource<Boolean>> {
+        return callbackFlow {
+            trySend(Resource.Loading())
+            val reference = firebaseDateBase.reference.child(ROOT).child(PRODUCTS_NODE)
+                .child(productId)
+
+            reference.removeValue()
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        deleteImage(
+                            storageReference = firebaseStorage.reference,
+                            imageUrl = imageUrl,
+                        )
+                        trySend(Resource.Success(true))
+                    } else {
+                        trySend(Resource.Error("Failed to delete product"))
+                    }
+                }
+
+            awaitClose { }
         }
     }
 }

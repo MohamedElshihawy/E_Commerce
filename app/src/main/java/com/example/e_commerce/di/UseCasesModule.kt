@@ -1,14 +1,18 @@
 package com.example.e_commerce.di
 
+import com.example.e_commerce.domain.useCases.AcceptRequestAdminCartUseCase
 import com.example.e_commerce.domain.useCases.AddNewProductUseCase
 import com.example.e_commerce.domain.useCases.AddOrderToCartUseCase
 import com.example.e_commerce.domain.useCases.AddProductImageUseCase
 import com.example.e_commerce.domain.useCases.DeleteAllOrdersFromCartUserCase
 import com.example.e_commerce.domain.useCases.DeleteOrderFromCartUseCase
+import com.example.e_commerce.domain.useCases.DeliverRequestAdminCartUseCase
 import com.example.e_commerce.domain.useCases.GetAllOrdersInCartUseCase
 import com.example.e_commerce.domain.useCases.GetAllProductsUseCase
+import com.example.e_commerce.domain.useCases.GetAllRequestAdminCartUseCase
 import com.example.e_commerce.domain.useCases.GetCurrentUserUseCase
 import com.example.e_commerce.domain.useCases.GetSingleProductUseCase
+import com.example.e_commerce.domain.useCases.RejectRequestAdminCartUseCase
 import com.example.e_commerce.domain.useCases.SignInUseCase
 import com.example.e_commerce.domain.useCases.SignUpUseCase
 import com.example.e_commerce.domain.useCases.SubmitUserOrdersUseCase
@@ -18,7 +22,7 @@ import com.example.e_commerce.domain.useCases.UploadUserReviewUseCase
 import com.example.e_commerce.domain.useCases.UseCasesWrapper
 import org.koin.dsl.module
 
-val userCasesModule = module {
+val useCasesModule = module {
 
     includes(repositoriesModule)
 
@@ -81,7 +85,24 @@ val userCasesModule = module {
     }
 
     single {
+        GetAllRequestAdminCartUseCase(get())
+    }
+
+    single {
+        AcceptRequestAdminCartUseCase(get())
+    }
+
+    single {
+        RejectRequestAdminCartUseCase(get())
+    }
+
+    single {
+        DeliverRequestAdminCartUseCase(get())
+    }
+    single {
         UseCasesWrapper(
+            get(), get(),
+            get(), get(),
             get(), get(),
             get(), get(),
             get(), get(),

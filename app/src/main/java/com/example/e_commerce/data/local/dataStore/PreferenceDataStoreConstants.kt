@@ -8,7 +8,7 @@ object PreferenceDataStoreConstants {
 
     val USER_PASSWORD_KEY = stringPreferencesKey("user_password")
 
-    val User_IMAGE_KEY = stringPreferencesKey("user_image")
+    val USER_IMAGE_KEY = stringPreferencesKey("user_image")
 
     val USER_AUTHORITY_KEY = stringPreferencesKey("user_authority")
 }

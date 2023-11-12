@@ -1,44 +1,56 @@
 package com.example.e_commerce.domain.models
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Category
-import androidx.compose.material.icons.filled.Checklist
-import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.AddBusiness
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ManageAccounts
+import androidx.compose.material.icons.filled.ModeEdit
+import androidx.compose.material.icons.filled.RequestPage
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.e_commerce.navigatoin.Screen
 
-data class NavDrawerItem(
+data class BottomNavItem(
     val id: Int,
-    val text: String,
     val icon: ImageVector,
+    val destination: String,
     val contentDescription: String = "",
 )
 
-val navDrawerItems = listOf(
-    NavDrawerItem(
+val userNavItems = listOf(
+
+    BottomNavItem(
         id = 0,
-        text = "Cart",
+        destination = Screen.UserHomeScreen.route,
+        icon = Icons.Default.Home,
+    ),
+    BottomNavItem(
+        id = 0,
+        destination = Screen.UserCartScreen.route,
         icon = Icons.Default.ShoppingCart,
     ),
-    NavDrawerItem(
-        id = 0,
-        text = "Orders",
-        icon = Icons.Default.Checklist,
-    ),
-    NavDrawerItem(
-        id = 0,
-        text = "Categories",
-        icon = Icons.Default.Category,
-    ),
-    NavDrawerItem(
-        id = 0,
-        text = "Manage Profile",
+    BottomNavItem(
+        id = 3,
+        destination = Screen.UserProfileScreen.route,
         icon = Icons.Default.ManageAccounts,
     ),
-    NavDrawerItem(
+)
+
+val adminNavItems = listOf(
+    BottomNavItem(
         id = 0,
-        text = "Log out",
-        icon = Icons.Default.Logout,
+        destination = "admin home",
+        icon = Icons.Default.ModeEdit,
+    ),
+    // add new product
+    BottomNavItem(
+        id = 1,
+        destination = Screen.AdminCategoriesManagement.route,
+        icon = Icons.Default.AddBusiness,
+    ),
+    BottomNavItem(
+        id = 2,
+        destination = Screen.AdminOrdersCartScreen.route,
+        icon = Icons.Default.RequestPage,
     ),
 )

@@ -16,4 +16,8 @@ data class UseCasesWrapper(
     val deleteAllOrdersFromCartUserCase: DeleteAllOrdersFromCartUserCase,
     val submitUserOrders: SubmitUserOrdersUseCase,
     val getAllOrdersInCartUseCase: GetAllOrdersInCartUseCase,
+    val getAllRequestAdminCart: GetAllRequestAdminCartUseCase,
+    val acceptRequestAdminCartUseCase: AcceptRequestAdminCartUseCase,
+    val rejectRequestAdminCartUseCase: RejectRequestAdminCartUseCase,
+    val deliverRequestAdminCartUseCase: DeliverRequestAdminCartUseCase,
 )

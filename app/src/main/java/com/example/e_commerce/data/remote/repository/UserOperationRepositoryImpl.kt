@@ -4,9 +4,9 @@ import android.net.Uri
 import android.util.Log
 import com.example.e_commerce.data.local.entity.UserRegistrationEntity
 import com.example.e_commerce.domain.repository.UserOperationRepository
+import com.example.e_commerce.domain.utils.parsers.UserRegistrationParser.userRegistrationEntityToHashMap
 import com.example.e_commerce.domain.utils.uploadImage
 import com.example.e_commerce.util.Constants
-import com.example.e_commerce.util.HelperMethods
 import com.example.e_commerce.util.Resource
 import com.example.e_commerce.util.TimeDateFormatting
 import com.google.firebase.database.DataSnapshot
@@ -57,7 +57,7 @@ class UserOperationRepositoryImpl(
             trySend(Resource.Loading())
 
             dbReference.updateChildren(
-                HelperMethods.userRegistrationEntityToHashMap(
+                userRegistrationEntityToHashMap(
                     userRegistration,
                 ),
             )

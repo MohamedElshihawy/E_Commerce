@@ -21,4 +21,14 @@ interface ProductOperationsRepository {
         averageRating: Float,
         userRating: Float,
     ): Flow<Resource<List<ProductReviews>>>
+
+    suspend fun editProductDetails(
+        productId: String,
+        product: Product,
+    ): Flow<Resource<Boolean>>
+
+    suspend fun deleteProduct(
+        productId: String,
+        imageUrl: String,
+    ): Flow<Resource<Boolean>>
 }

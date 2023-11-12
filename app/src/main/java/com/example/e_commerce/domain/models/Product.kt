@@ -1,7 +1,7 @@
 package com.example.e_commerce.domain.models
 
 import com.example.e_commerce.presentation.common.state.CustomTextFieldState
-import com.example.e_commerce.presentation.features.addNewProduct.AddNewProductState
+import com.example.e_commerce.presentation.features.admin.addNewProduct.AddNewProductState
 
 data class Product(
     val id: String,
