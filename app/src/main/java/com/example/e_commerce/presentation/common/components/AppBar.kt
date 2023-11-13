@@ -2,12 +2,12 @@ package com.example.e_commerce.presentation.common.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.Logout
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -32,8 +32,8 @@ fun AppBar(
     searchText: String,
     onSearchValueChange: (String) -> Unit,
     onSearchSubmit: (String) -> Unit,
-    onNavIconClick: () -> Unit,
     onSearchIconClick: () -> Unit,
+    onLogOutIconClick: () -> Unit,
 
 ) {
     TopAppBar(
@@ -53,6 +53,7 @@ fun AppBar(
             } else {
                 AppTitleAndSearchIcon(
                     onSearchIconClick = onSearchIconClick,
+                    onLogOutIconClick = onLogOutIconClick
                 )
             }
         },
@@ -63,15 +64,6 @@ fun AppBar(
                 navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
             ),
         scrollBehavior = null,
-        navigationIcon = {
-            IconButton(onClick = { onNavIconClick() }) {
-                Icon(
-                    imageVector = Icons.Default.Menu,
-                    contentDescription = "",
-                    modifier = Modifier.size(36.dp),
-                )
-            }
-        },
     )
 }
 
@@ -79,6 +71,7 @@ fun AppBar(
 fun AppTitleAndSearchIcon(
     modifier: Modifier = Modifier,
     onSearchIconClick: () -> Unit,
+    onLogOutIconClick: () -> Unit,
 ) {
     Row(modifier) {
         Text(
@@ -95,6 +88,17 @@ fun AppTitleAndSearchIcon(
             Icon(
                 imageVector = Icons.Outlined.Search,
                 contentDescription = "Search",
+            )
+        }
+
+        Spacer(modifier = Modifier.width(4.dp))
+
+        IconButton(
+            onClick = { onLogOutIconClick() },
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Logout,
+                contentDescription = "Log Out",
             )
         }
     }

@@ -28,6 +28,7 @@ import com.example.e_commerce.presentation.common.components.BottomNavBar
 import com.example.e_commerce.presentation.features.admin.addNewProduct.AddNewProductScreen
 import com.example.e_commerce.presentation.features.admin.adminCategoriesManagement.AdminCategoriesScreen
 import com.example.e_commerce.presentation.features.admin.ordersCart.AdminOrdersCartScreen
+import com.example.e_commerce.presentation.features.admin.products.ProductsScreen
 import com.example.e_commerce.presentation.features.shared.signIn.SignInScreen
 import com.example.e_commerce.presentation.features.shared.signUp.SignUpScreen
 import com.example.e_commerce.presentation.features.shared.splash.SplashScreen
@@ -62,13 +63,6 @@ fun AppScreen(modifier: Modifier = Modifier) {
             if (destination.route!! == Screen.UserHomeScreen.route) {
                 showFloatingButton.value = true
                 showBottomNavigationBar.value = true
-            } else if (
-                destination.route!! == Screen.Splash.route ||
-                destination.route!! == Screen.SignUp.route ||
-                destination.route!! == Screen.SignIn.route
-            ) {
-                showBottomNavigationBar.value = false
-                showFloatingButton.value = false
             } else {
                 showBottomNavigationBar.value = true
                 showFloatingButton.value = false
@@ -100,7 +94,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
         },
     ) { padding ->
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .padding(padding),
         ) {
             AppNavGraph(navController, drawerState)
@@ -197,6 +191,12 @@ fun AppNavGraph(
 
         composable(route = Screen.AdminOrdersCartScreen.route) {
             AdminOrdersCartScreen(
+                navController = navController,
+            )
+        }
+
+        composable(route = Screen.AdminProductsScreen.route) {
+            ProductsScreen(
                 navController = navController,
             )
         }

@@ -48,7 +48,7 @@ class PreferenceDataStoreHelper(context: Context) : PreferenceDataStoreApi {
         }
     }
 
-    override suspend fun <T> clearAllPreference() {
+    override suspend fun clearAllPreference() {
         dataSource.edit { preferences ->
             preferences.clear()
         }

@@ -65,7 +65,7 @@ fun AddNewProductScreen(
                     AddNewProductEvents.PickProductImage(imageUri.toString()),
                 )
             },
-            pickedUri = pickedImageUri.value.toString(),
+            pickedUri = pickedImageUri.value,
         )
 
         Spacer(modifier = Modifier.height(16.dp))

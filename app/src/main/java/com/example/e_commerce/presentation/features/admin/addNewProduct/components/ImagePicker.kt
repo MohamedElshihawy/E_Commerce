@@ -25,7 +25,7 @@ import coil.compose.rememberAsyncImagePainter
 @Composable
 fun ImagePicker(
     modifier: Modifier = Modifier,
-    pickedUri: String? = null,
+    pickedUri: Uri? = null,
     onImagePicked: (Uri?) -> Unit,
     icon: ImageVector = Icons.Outlined.ImageSearch,
     isClickable: Boolean = true,
@@ -54,7 +54,6 @@ fun ImagePicker(
         )
     } else {
         val painter = rememberAsyncImagePainter(model = pickedUri)
-
         Spacer(modifier = Modifier.height(16.dp))
         Image(
             painter = painter,

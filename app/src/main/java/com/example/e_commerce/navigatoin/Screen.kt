@@ -12,7 +12,8 @@ sealed class Screen(val route: String) {
     object ProductDetails : Screen(route = "product_details_screen")
     object UserCartScreen : Screen(route = "cart_screen")
     object ConfirmOrderCartScreen : Screen(route = "confirm_order_cart_screen")
-     object AdminOrdersCartScreen : Screen(route = "admin_orders_cart_screen")
+    object AdminOrdersCartScreen : Screen(route = "admin_orders_cart_screen")
+    object AdminProductsScreen : Screen(route = "admin_products_screen")
 
     fun addArgs(vararg args: String): String {
         return buildString {

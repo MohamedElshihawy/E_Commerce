@@ -1,6 +1,5 @@
 package com.example.e_commerce.domain.repository
 
-import com.example.e_commerce.data.local.entity.UserRegistrationEntity
 import com.example.e_commerce.domain.models.UserRegistration
 import com.example.e_commerce.util.Resource
 import kotlinx.coroutines.flow.Flow

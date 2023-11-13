@@ -4,9 +4,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddBusiness
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ManageAccounts
-import androidx.compose.material.icons.filled.ModeEdit
 import androidx.compose.material.icons.filled.RequestPage
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.ShoppingCartCheckout
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.e_commerce.navigatoin.Screen
 
@@ -39,8 +39,8 @@ val userNavItems = listOf(
 val adminNavItems = listOf(
     BottomNavItem(
         id = 0,
-        destination = "admin home",
-        icon = Icons.Default.ModeEdit,
+        destination = Screen.AdminOrdersCartScreen.route,
+        icon = Icons.Default.ShoppingCartCheckout,
     ),
     // add new product
     BottomNavItem(
